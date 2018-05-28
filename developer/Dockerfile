@@ -20,6 +20,7 @@ RUN apk add --no-cache \
 	icu-libs \
 	$PHPIZE_DEPS \
   nano \
+  git \
 # configure extensions
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
