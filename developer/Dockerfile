@@ -6,6 +6,9 @@ ENV COMPOSER_VERSION 1.6.5
 
 # install dependencies
 RUN apk add --no-cache \
+    supervisor \
+    dcron \
+    ca-certificates \
     freetype \
     libssl1.0 \
     libpng \
