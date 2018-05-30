@@ -4,6 +4,7 @@ LABEL maintainer="bence.gazder@brixify.com"
 
 # install dependencies
 RUN apk add --no-cache \
+    bash \
     supervisor \
     dcron \
     ca-certificates \
@@ -45,13 +46,13 @@ RUN apk add --no-cache \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
-	openssl-dev \
-	icu-dev \
-	$PHPIZE_DEPS \
-	&& rm /usr/local/bin/phpdbg \
-	&& rm -rf /usr/src/ \
-	&& apk info \
-	&& php -i \
-	&& php -v
+    openssl-dev \
+    icu-dev \
+    $PHPIZE_DEPS \
+    && rm /usr/local/bin/phpdbg \
+    && rm -rf /usr/src/ \
+    && apk info \
+    && php -i \
+    && php -v
 
 CMD ["php", "-v"]

@@ -6,6 +6,7 @@ ENV COMPOSER_VERSION 1.6.5
 
 # install dependencies
 RUN apk add --no-cache \
+    bash \
     supervisor \
     dcron \
     ca-certificates \
@@ -18,13 +19,13 @@ RUN apk add --no-cache \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
-	openssl-dev \
-	icu-dev \
-	icu-libs \
-	$PHPIZE_DEPS \
-  nano \
-  git \
-  openssh-client \
+	  openssl-dev \
+	  icu-dev \
+    icu-libs \
+    $PHPIZE_DEPS \
+    nano \
+    git \
+    openssh-client \
 # configure extensions
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -64,8 +65,8 @@ RUN apk add --no-cache \
     libpng-dev \
 	  openssl-dev \
 	  icu-dev \
-	&& apk info \
-	&& php -i \
-	&& php -v
+    && apk info \
+    && php -i \
+    && php -v
 
 CMD ["php", "-v"]
