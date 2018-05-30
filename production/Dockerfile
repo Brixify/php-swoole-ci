@@ -17,10 +17,10 @@ RUN apk add --no-cache \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
-  	openssl-dev \
-  	icu-dev \
-  	icu-libs \
-  	$PHPIZE_DEPS \
+    openssl-dev \
+    icu-dev \
+    icu-libs \
+    $PHPIZE_DEPS \
 # configure extensions
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \

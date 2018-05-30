@@ -19,8 +19,8 @@ RUN apk add --no-cache \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
-	  openssl-dev \
-	  icu-dev \
+    openssl-dev \
+    icu-dev \
     icu-libs \
     $PHPIZE_DEPS \
     nano \
@@ -63,8 +63,8 @@ RUN apk add --no-cache \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
-	  openssl-dev \
-	  icu-dev \
+    openssl-dev \
+    icu-dev \
     && apk info \
     && php -i \
     && php -v
