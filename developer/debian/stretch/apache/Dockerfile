@@ -53,6 +53,8 @@ RUN apt update && apt install -y \
     && mv ./mc /usr/local/bin \
 # set up composer
     && composer global require hirak/prestissimo --profile --prefer-dist --no-progress --no-suggest --optimize-autoloader --no-interaction \
+# configure stuff
+    && a2enmod rewrite \
 # cleanup
     && docker-php-source delete \
     && apt purge -y \

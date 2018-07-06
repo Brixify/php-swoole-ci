@@ -36,6 +36,8 @@ RUN apt update && apt install -y \
     && docker-php-ext-enable swoole \
     && pecl install mongodb \
     && docker-php-ext-enable mongodb \
+# configure stuff
+    && a2enmod rewrite \
 # cleanup
     && docker-php-source delete \
     && apt purge -y \
