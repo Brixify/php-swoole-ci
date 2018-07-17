@@ -18,6 +18,7 @@ RUN apt update && apt install -y \
     libpng-dev \
     libicu-dev \
     $PHPIZE_DEPS \
+    sudo \
 # configure extensions
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
