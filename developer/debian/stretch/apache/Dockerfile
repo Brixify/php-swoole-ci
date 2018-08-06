@@ -56,6 +56,7 @@ RUN apt update && apt install -y \
     && composer global require hirak/prestissimo --profile --prefer-dist --no-progress --no-suggest --optimize-autoloader --no-interaction \
 # configure stuff
     && a2enmod rewrite \
+    && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
 # cleanup
     && docker-php-source delete \
     && apt purge -y \

@@ -39,6 +39,7 @@ RUN apt update && apt install -y \
     && docker-php-ext-enable mongodb \
 # configure stuff
     && a2enmod rewrite \
+    && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
 # cleanup
     && docker-php-source delete \
     && apt purge -y \
