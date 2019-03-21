@@ -1,11 +1,12 @@
-FROM php:7.2-apache-stretch
+FROM php:7.3-apache-stretch
 MAINTAINER "Bence Gazder"
 LABEL maintainer="bence.gazder@brixify.com"
 
-ENV COMPOSER_VERSION 1.6.5
+ENV COMPOSER_VERSION 1.8.4
 
 # install dependencies
-RUN apt update && apt install -y \
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" && \ 
+    apt update && apt install -y \
     supervisor \
     cron \
     ca-certificates \
@@ -19,6 +20,8 @@ RUN apt update && apt install -y \
     libcurl4-openssl-dev \
     libpng-dev \
     libicu-dev \
+    zip \
+    libzip-dev \
     $PHPIZE_DEPS \
     nano \
     git \
@@ -38,6 +41,7 @@ RUN apt update && apt install -y \
     zip \
     gd \
     bcmath \
+    opcache \
 # pecl extensions
     && pecl install swoole \
     && docker-php-ext-enable swoole \

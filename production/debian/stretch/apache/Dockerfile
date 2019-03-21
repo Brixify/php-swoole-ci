@@ -1,9 +1,10 @@
-FROM php:7.2-apache-stretch
+FROM php:7.3-apache-stretch
 MAINTAINER "Bence Gazder"
 LABEL maintainer="bence.gazder@brixify.com"
 
 # install dependencies
-RUN apt update && apt install -y \
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+    apt update && apt install -y \
     supervisor \
     cron \
     ca-certificates \
@@ -17,9 +18,12 @@ RUN apt update && apt install -y \
     libcurl4-openssl-dev \
     libpng-dev \
     libicu-dev \
+    zip \
+    libzip-dev \
     $PHPIZE_DEPS \
     sudo \
 # configure extensions
+    && docker-php-ext-configure zip \
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 # install extensions
@@ -33,6 +37,8 @@ RUN apt update && apt install -y \
     zip \
     gd \
     bcmath \
+    opcache \
+# pecl extensions
     && pecl install swoole \
     && docker-php-ext-enable swoole \
     && pecl install mongodb \
