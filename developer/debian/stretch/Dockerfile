@@ -22,12 +22,14 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" && \
     libicu-dev \
     zip \
     libzip-dev \&& docker-php-ext-configure intl
+    libgmp-dev \
     $PHPIZE_DEPS \
     nano \
     git \
     openssh-client \
     sudo \
 # configure extensions
+    && docker-php-ext-configure gmp \
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 # install extensions
@@ -40,6 +42,7 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" && \
     exif \
     zip \
     gd \
+    gmp \
     bcmath \
     opcache \
 # pecl extensions

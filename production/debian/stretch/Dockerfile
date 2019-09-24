@@ -20,10 +20,12 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     libicu-dev \
     zip \
     libzip-dev \
+    libgmp-dev \
     $PHPIZE_DEPS \
     sudo \
 # configure extensions
     && docker-php-ext-configure intl --enable-intl \
+    && docker-php-ext-configure gmp \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 # install extensions
     && docker-php-ext-install \
@@ -35,6 +37,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     exif \
     zip \
     gd \
+    gmp \
     bcmath \
     opcache \
 # pecl extensions
