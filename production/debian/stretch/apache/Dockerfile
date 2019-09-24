@@ -38,6 +38,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     gd \
     bcmath \
     opcache \
+    gmp\
 # pecl extensions
     && pecl install swoole \
     && docker-php-ext-enable swoole \
